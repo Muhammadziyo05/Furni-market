@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furni - Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 28px; font-weight: 700; color: #fff; }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a:hover, nav a.active { color: #fff; }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+    .icons { display: flex; gap: 20px; color: white; }
+    .blog-section {
+      padding: 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .blog-section h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #3b5d50;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .post {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .post img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .post h3 {
+      margin-bottom: 10px;
+      color: #3b5d50;
+    }
+    .post p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .read-more {
+      margin-top: auto;
+      text-align: left;
+    }
+    .read-more a {
+      text-decoration: none;
+      color: #3b5d50;
+      font-weight: bold;
+    }
+    .newsletter {
+      margin-top: 60px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #3b5d50;
+    }
+    .newsletter input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      background-color: #3b5d50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Login or Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="blog-section">
+    <h1>Latest Blog Posts</h1>
+    <div class="posts">
+      <div class="post">
+        <img src="https://themewagon.github.io/furni/images/post-1.jpg" alt="Post 1">
+        <h3>Top 5 Living Room Makeover Ideas</h3>
+        <p>Discover easy and budget-friendly tips to transform your living room into a cozy haven with Furni furniture.</p>
+        <div class="read-more"><a href="#">Read More →</a></div>
+      </div>
+      <div class="post">
+        <img src="https://themewagon.github.io/furni/images/post-2.jpg" alt="Post 2">
+        <h3>How to Choose the Perfect Sofa</h3>
+        <p>Picking the right sofa is crucial. Learn how to select a design that fits your space and lifestyle.</p>
+        <div class="read-more"><a href="#">Read More →</a></div>
+      </div>
+      <div class="post">
+        <img src="https://themewagon.github.io/furni/images/post-3.jpg" alt="Post 3">
+        <h3>Sustainable Materials We Love</h3>
+        <p>Explore eco-friendly materials used in our products and how they help the environment.</p>
+        <div class="read-more"><a href="#">Read More →</a></div>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Stay updated with new blog posts, product tips, and exclusive offers.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Savatcha - Furni</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+
+    main {
+      padding: 40px 60px;
+    }
+
+    h2 {
+      color: #3b5d50;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .clear-btn {
+      background-color: crimson;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cart-card {
+      background: white;
+      padding: 20px;
+      width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      position: relative;
+    }
+
+    .cart-card h4 {
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .cart-card p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 20px;
+      width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product-card h4 {
+      margin: 12px 0 6px;
+      font-size: 18px;
+    }
+
+    .product-card p.price {
+      font-size: 16px;
+      color: #444;
+      font-weight: bold;
+    }
+
+    .product-card p.description {
+      font-size: 14px;
+      color: #666;
+      margin: 6px 0 10px;
+    }
+
+    .delete-btn {
+      margin-top: 10px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .sell-btn{
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+    .sell{
+      padding: 10px;
+      background-color: #14617f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .sell:hover {
+      background-color: #1790c9;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+      margin-top: 25vh;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/user/profile">Profil</a>
+      <a href="/user/shop">Shop</a>
+      <a href="/user/cart"  class="active">Savatcha</a>
+      <a href="/user/tolov">To‘lov</a>
+      <a href="/exit">Chiqish</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Sizning savatchangiz</h2>
+    <div class="actions">
+      <button class="clear-btn" onclick="clearCart()">🗑️ Savatchani tozalash</button>
+    </div>
+    <div class="cart-grid" id="cartContainer">
+
+    </div>
+    <div class="sell-btn">
+      <button class="sell">Sotib olish</button>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+
+  <script>
+    const username = localStorage.getItem('currentUser');
+    const container = document.getElementById('cartContainer');
+
+    if (!username) {
+      alert("Iltimos, tizimga kiring.");
+    } else {
+      loadCart();
+    }
+
+    function loadCart() {
+      fetch(`http://localhost:3000/cart/${username}`)
+        .then(res => res.json())
+        .then(data => {
+          container.innerHTML = "";
+
+          if (data.length === 0) {
+            container.innerHTML = "<p>Savatchangiz bo‘sh.</p>";
+          } else {
+            data.forEach((item, index) => {
+              const card = document.createElement('div');
+              card.className = 'product-card';
+              card.innerHTML = `
+                <img src="${item.image}" alt="Kids Bed">
+                <h4>${item.name}</h4>
+                <p>Narxi: ${item.price.toLocaleString()} so‘m</p>
+                <p>Soni: ${item.quantity}</p>
+                <button class="delete-btn" onclick="removeItem(${index})">O‘chirish</button>
+              `;
+              container.appendChild(card);
+            });
+          }
+        });
+    }
+
+    function clearCart() {
+      fetch(`http://localhost:3000/cart/${username}`, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(data.message);
+          loadCart();
+        });
+    }
+
+    function removeItem(index) {
+      fetch(`http://localhost:3000/cart/${username}/${index}`, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(data.message);
+          loadCart();
+        });
+    }
+  </script>
+
+</body>
+
+</html>

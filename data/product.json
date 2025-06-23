@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Soat",
+    "price": 50000,
+    "description": "Yaxshi",
+    "quantity": 12,
+    "image": "/image/1750661517482-clock.jpg"
+  },
+  {
+    "name": "Kravat",
+    "price": 2000000,
+    "description": "Bolalar uchun yaxshi",
+    "quantity": 1,
+    "image": "/image/1750668229253-kidsBed.jpg"
+  }
+]

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furni - Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      color: white;
+    }
+
+    .shop-section {
+      padding: 60px;
+      background-color: white;
+    }
+
+    .shop-section h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #3b5d50;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+    }
+
+    .product p {
+      font-weight: bold;
+      color: #3b5d50;
+    }
+
+    .category {
+      margin-bottom: 40px;
+    }
+
+    .category h3 {
+      color: #2b473d;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .product-grida {
+      width: 100%;
+      /* margin-left: 10%; */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .product-carda {
+      background: white;
+      padding: 20px;
+      width: 290px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .product-carda img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
+
+    .product-carda h4 {
+      margin: 12px 0 6px;
+      font-size: 18px;
+    }
+
+    .product-carda p.pricea {
+      font-size: 16px;
+      color: #444;
+      font-weight: bold;
+    }
+
+    .product-carda p.descriptiona {
+      font-size: 14px;
+      color: #666;
+      margin: 6px 0 10px;
+    }
+
+
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/shop" class="active">Shop</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Login or Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="shop-section">
+    <h1>Shop</h1>
+    <div class="products-grid">
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Wooden Chair">
+        <h3>Wooden Chair</h3>
+        <p>$50.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-2.png" alt="Modern Sofa">
+        <h3>Modern Sofa</h3>
+        <p>$250.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-3.png" alt="Comfort Bed">
+        <h3>Comfort Bed</h3>
+        <p>$480.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Classic Armchair">
+        <h3>Classic Armchair</h3>
+        <p>$120.00</p>
+      </div>
+    </div>
+    <br><br>
+    <div class="products-grid">
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Wooden Chair">
+        <h3>Wooden Chair</h3>
+        <p>$50.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-2.png" alt="Modern Sofa">
+        <h3>Modern Sofa</h3>
+        <p>$250.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-3.png" alt="Comfort Bed">
+        <h3>Comfort Bed</h3>
+        <p>$480.00</p>
+      </div>
+      <div class="product">
+        <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Classic Armchair">
+        <h3>Classic Armchair</h3>
+        <p>$120.00</p>
+      </div>
+    </div>
+  </section>
+  <section class="shop-section">
+    <h1 style="margin-top: 50px;" id="titleproduct">Yangi mahsulotlar ro‘yxati</h2>
+    <br><br>
+    <div class="product-grida" id="product-list"></div>
+  </section>
+
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+    });
+
+    // Mahsulotlarni yuklash funksiyasi
+    function loadProducts() {
+      fetch('/admin/productcs')
+        .then(res => res.json())
+        .then(data => {
+          const productList = document.getElementById('product-list');
+          productList.innerHTML = '';
+
+          data.forEach((item, index) => {
+            productList.innerHTML += `
+          <div class="product-carda">
+            <img class="img" src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h4>
+            <p class="pricea">${item.price.toLocaleString()} so‘m</p>
+            <p class="descriptiona">${item.description || 'Tavsif yo‘q'}</p>
+          </div>
+        `;
+          });
+        });
+    }
+
+  </script>
+</body>
+
+</html>

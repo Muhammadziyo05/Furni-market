@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furni - Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a:hover, nav a.active {
+      color: #fff;
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      color: white;
+    }
+    .services-section {
+      padding: 60px;
+      background-color: white;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .services-section h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #3b5d50;
+    }
+    .service-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .service-box {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .service-box img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .service-box h3 {
+      margin-bottom: 10px;
+      color: #3b5d50;
+    }
+    .service-box p {
+      color: #555;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/services" class="active">Services</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Login or Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="services-section">
+    <h1>Our Services</h1>
+    <div class="service-boxes">
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/wooden-chair.png" alt="Custom Design" />
+        <h3>Custom Furniture Design</h3>
+        <p>We create bespoke furniture pieces tailored to your needs and preferences.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/interior.png" alt="Interior Consulting" />
+        <h3>Interior Consulting</h3>
+        <p>Our experts help you design functional and beautiful living spaces.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/room.png" alt="3D Room Planning" />
+        <h3>3D Room Planning</h3>
+        <p>Visualize your new space with our advanced 3D planning tools.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/shipped.png" alt="Fast Delivery" />
+        <h3>Fast & Free Delivery</h3>
+        <p>Get your orders delivered quickly and securely to your doorstep.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/online-support.png" alt="Support" />
+        <h3>After-Sales Support</h3>
+        <p>We are here to assist you even after your purchase is complete.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/tools.png" alt="Assembly" />
+        <h3>Furniture Assembly</h3>
+        <p>We offer professional assembly services for all purchased products.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+</body>
+</html>

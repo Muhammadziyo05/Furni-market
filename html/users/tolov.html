@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To‘lov sahifasi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+
+    main {
+      padding: 40px 60px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .cart-summary,
+    .payment-form {
+      background: #fff;
+      border-radius: 8px;
+      padding: 25px 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 45%;
+    }
+
+    h2 {
+      color: #3b5d50;
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .total {
+      font-weight: bold;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      margin-top: 15px;
+      font-size: 17px;
+      text-align: right;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b5d50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2a453d;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+      margin-top: 6.5vh;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/user/profile">Profil</a>
+      <a href="/user/shop">Shop</a>
+      <a href="/user/cart">Savatcha</a>
+      <a href="/user/tolov" class="active">To‘lov</a>
+      <a href="/exit">Chiqish</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Chap tomon: Savatcha -->
+      <div class="cart-summary">
+        <h2>Savatchadagi mahsulotlar</h2>
+        <div id="cart-items"></div>
+        <div class="total" id="cart-total">Umumiy: 0 so‘m</div>
+      </div>
+
+      <!-- O‘ng tomon: To‘lov formasi -->
+      <div class="payment-form">
+        <h2>To‘lov qilish</h2>
+        <form onsubmit="makePayment(event)">
+          <div class="form-group">
+            <div class="form-field">
+              <label for="fullName">Ism Familya</label>
+              <input type="text" id="fullName" required>
+            </div>
+            <div class="form-field">
+              <label for="amount">To‘lov summasi (so‘m)</label>
+              <input type="number" id="amount" placeholder="Masalan: 500000" required>
+            </div>
+          </div>
+
+          <label for="paymentType">To‘lov turi</label>
+          <select id="paymentType" onchange="toggleCardFields()" required>
+            <option value="">Tanlang</option>
+            <option value="Naqd">Naqd</option>
+            <option value="Plastik">Plastik (Karta orqali)</option>
+            <option value="Click">Click</option>
+            <option value="Payme">Payme</option>
+          </select>
+
+          <div id="cardFields" style="display: none;">
+            <label for="cardNumber">💳 Karta raqami</label>
+            <input type="text" id="cardNumber" maxlength="19" placeholder="8600 XXXX XXXX XXXX">
+            <div class="form-group">
+              <div class="form-field">
+                <label for="expiry">Muddati (MM/YY)</label>
+                <input type="text" id="expiry" placeholder="12/25" maxlength="5">
+              </div>
+              <div class="form-field">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" maxlength="3" placeholder="123">
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 20px;">
+            <button type="submit">✅ To‘lovni amalga oshirish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('currentUser');
+
+      if (!username) {
+        alert("Iltimos, tizimga kiring.");
+        return;
+      }
+
+      fetch(`http://localhost:3000/get-cart/${username}`)
+        .then(res => res.json())
+        .then(data => {
+          const cartItems = document.getElementById('cart-items');
+          const totalEl = document.getElementById('cart-total');
+          let total = 0;
+          cartItems.innerHTML = '';
+
+          if (!Array.isArray(data) || data.length === 0) {
+            cartItems.innerHTML = '<p>Savatcha bo‘sh.</p>';
+            totalEl.textContent = "Umumiy: 0 so‘m";
+            return;
+          }
+
+          data.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item';
+            itemDiv.innerHTML = `<span>${item.name}</span><span>${(item.price * (item.quantity || 1)).toLocaleString()} so‘m</span>`;
+            cartItems.appendChild(itemDiv);
+            total += item.price * (item.quantity || 1);
+          });
+
+          totalEl.textContent = `Umumiy: ${total.toLocaleString()} so‘m`;
+
+          // Agar avtomatik summani formaga yozmoqchi bo‘lsangiz:
+          document.getElementById('amount').value = total;
+        })
+        .catch(err => {
+          console.error("Xatolik:", err);
+          alert("Savatchani yuklashda xatolik yuz berdi");
+        });
+    });
+
+    function toggleCardFields() {
+      const paymentType = document.getElementById("paymentType").value;
+      const cardFields = document.getElementById("cardFields");
+
+      cardFields.style.display = (paymentType === "Plastik") ? "block" : "none";
+    }
+
+    function makePayment(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('fullName').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      const paymentType = document.getElementById('paymentType').value;
+      const username = localStorage.getItem("currentUser");
+
+      if (!username || !name || !amount || !paymentType) {
+        alert("Iltimos, barcha maydonlarni to‘ldiring.");
+        return;
+      }
+
+      const paymentData = {
+        username,
+        name,
+        amount: parseInt(amount),
+        paymentType,
+        date: new Date().toLocaleString()
+      };
+
+      if (paymentType === "Plastik") {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const expiry = document.getElementById('expiry').value.trim();
+        const cvv = document.getElementById('cvv').value.trim();
+
+        if (!cardNumber || !expiry || !cvv) {
+          alert("Karta ma’lumotlarini to‘liq kiriting.");
+          return;
+        }
+
+        paymentData.cardNumber = cardNumber;
+        paymentData.expiry = expiry;
+        paymentData.cvv = cvv;
+      }
+
+      fetch("/pay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(paymentData)
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(data.message);
+          if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert("To‘lovda xatolik yuz berdi.");
+        });
+    }
+  </script>
+</body>
+
+</html>

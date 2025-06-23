@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furni - About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a:hover, nav a.active {
+      color: #fff;
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      color: white;
+    }
+    .about-section {
+      padding: 60px;
+      background-color: white;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about-section h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #3b5d50;
+    }
+    .about-section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .feature-box {
+      flex: 1 1 250px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .feature-box h3 {
+      margin-bottom: 10px;
+      color: #3b5d50;
+    }
+    .feature-box p {
+      color: #666;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/about" class="active">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Login or Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <h1>About Us</h1>
+    <p>At Furni, we believe that your home should reflect your personality and lifestyle. Since our founding in 2015, we have been passionate about creating high-quality, modern furniture that enhances comfort, function, and beauty in every space.</p>
+    <p>Our team of designers and craftsmen work tirelessly to bring innovative, sustainable, and stylish products to our customers. From cozy sofas to elegant dining sets, each piece is crafted with precision and love.</p>
+    <p>We take pride in our customer service, fast delivery, and continuous improvement based on your feedback. Whether you're furnishing your first apartment or updating your dream home, Furni is here to help you create a space you love.</p>
+
+    <div class="about-features">
+      <div class="feature-box">
+        <h3>10+ Years Experience</h3>
+        <p>We’ve been creating and delivering quality furniture for over a decade.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Eco-Friendly Materials</h3>
+        <p>All our products are designed with sustainability in mind.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Global Delivery</h3>
+        <p>Our logistics network enables us to deliver to over 50 countries worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+</body>
+</html>

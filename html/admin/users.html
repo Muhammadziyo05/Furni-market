@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Foydalanuvchilar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    aside {
+      width: 220px;
+      background: #3b5d50;
+      color: white;
+      padding: 20px;
+    }
+
+    aside h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    aside nav a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    aside nav a:hover,
+    aside nav a.active {
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #3b5d50;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    thead {
+      background-color: #3b5d50;
+      color: white;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <aside>
+    <h2>Admin Panel</h2>
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/products">Products</a>
+      <a href="/admin/users" class="active">Foydalanuvchilar</a>
+      <a href="/admin/payments">To‘lovlar</a>
+      <a href="/admin/message">Xabarlar</a>
+      <a href="/exit">Chiqish</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="section">
+      <h1>Foydalanuvchilar ro‘yxati</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Foydalanuvchi nomi</th>
+            <th>Email</th>
+            <th>Parol</th>
+            <th>Telefon</th>
+            <th>Manzil</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <!-- JavaScript orqali to‘ldiriladi -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tableBody = document.getElementById('userTableBody');
+
+      fetch('/admin/user')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Serverdan noto‘g‘ri javob");
+          }
+          return response.json();
+        })
+        .then(users => {
+          let index = 1;
+          tableBody.innerHTML = ''; // tozalash
+
+          Object.values(users).forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${index++}</td>
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+            <td>${user.password}</td>
+            <td>${user.phone}</td>
+            <td>${user.address}</td>
+          `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => {
+          console.error('Xatolik:', error);
+          tableBody.innerHTML = '<tr><td colspan="6" style="color:red;">Maʼlumotlarni yuklashda xatolik yuz berdi</td></tr>';
+        });
+    });
+  </script>
+
+</body>
+
+</html>

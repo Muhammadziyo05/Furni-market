@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Furni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    aside {
+      width: 220px;
+      background: #3b5d50;
+      color: white;
+      padding: 20px;
+    }
+
+    aside h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    aside nav a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    aside nav a:hover,
+    aside nav a.active {
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #3b5d50;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <aside>
+    <h2>Admin Panel</h2>
+    <nav>
+      <a href="/admin/dashboard" class="active">Dashboard</a>
+      <a href="/admin/products">Products</a>
+      <a href="/admin/users">Foydalanuvchilar</a>
+      <a href="/admin/payments">To‘lovlar</a>
+      <a href="/admin/message">Xabarlar</a>
+      <a href="/exit">Chiqish</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Dashboardga xush kelibsiz</h1>
+    <div id="content" class="section">
+      <p>Yuqoridagi menyudan bo‘limni tanlang.</p>
+    </div>
+  </main>
+
+  <script>
+
+    function loadPayments() {
+      fetch('/admin/payments')
+        .then(res => res.json())
+        .then(data => {
+          const content = document.getElementById('content');
+          content.innerHTML = '<h2>To‘lovlar tarixi</h2>';
+          data.forEach((entry, i) => {
+            content.innerHTML += `<p>${i + 1}. ${entry.name} - ${entry.amount} so‘m - ${entry.paymentType} (${entry.date})</p>`;
+          });
+        });
+    }
+
+    function loadSupport() {
+      fetch('/admin/support')
+        .then(res => res.json())
+        .then(data => {
+          const content = document.getElementById('content');
+          content.innerHTML = '<h2>Xabarlar</h2>';
+          data.forEach(msg => {
+            content.innerHTML += `<p><strong>${msg.username}</strong>: ${msg.message}</p>`;
+          });
+        });
+    }
+  </script>
+</body>
+
+</html>

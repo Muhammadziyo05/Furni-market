@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Furni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    aside {
+      width: 220px;
+      background: #3b5d50;
+      color: white;
+      padding: 20px;
+    }
+
+    aside h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    aside nav a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    aside nav a:hover,
+    aside nav a.active {
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #3b5d50;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <aside>
+    <h2>Admin Panel</h2>
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/products">Products</a>
+      <a href="/admin/users">Foydalanuvchilar</a>
+      <a href="/admin/payments">To‘lovlar</a>
+      <a href="/admin/message" class="active">Xabarlar</a>
+      <a href="/exit">Chiqish</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div id="content" class="section">
+    </div>
+  </main>
+
+  <script>
+    fetch('/admin/support')
+      .then(res => res.json())
+      .then(data => {
+        const content = document.getElementById('content');
+        content.innerHTML = `
+        <h2>Xabarlar</h2>
+        <br><br>
+        <table cellpadding="10" cellspacing="0" style="width:100%; text-align:left; border-collapse: collapse;">
+          <thead style="background:#3b5d50; color:white;">
+            <tr>
+              <th>#</th>
+              <th>Ism</th>
+              <th>Email</th>
+              <th>Mavzu</th>
+              <th>Xabar</th>
+              <th>Sana</th>
+            </tr>
+          </thead>
+          <tbody id="messageTableBody"></tbody>
+        </table>
+      `;
+
+        const tableBody = document.getElementById('messageTableBody');
+        let index = 1;
+
+        data.forEach(msg => {
+          const row = `
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td>${index++}</td>
+            <td>${msg.name || ''}</td>
+            <td>${msg.email || ''}</td>
+            <td>${msg.subject || ''}</td>
+            <td>${msg.message || ''}</td>
+            <td>${msg.date || ''}</td>
+          </tr>
+        `;
+          tableBody.innerHTML += row;
+        });
+      })
+      .catch(err => {
+        console.error('Xatolik:', err);
+        const content = document.getElementById('content');
+        content.innerHTML = '<p style="color:red;">❌ Xabarlarni yuklashda xatolik yuz berdi</p>';
+      });
+  </script>
+
+</body>
+
+</html>

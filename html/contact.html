@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furni - Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
+    header {
+      background-color: #3b5d50;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 28px; font-weight: 700; color: #fff; }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a:hover, nav a.active { color: #fff; }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #f9bf29;
+    }
+    .icons { display: flex; gap: 20px; color: white; }
+    .contact-section {
+      padding: 60px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .contact-section h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #3b5d50;
+      margin-bottom: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #3b5d50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .info {
+      margin-top: 40px;
+      text-align: center;
+      color: #555;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 60px;
+      text-align: center;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Furni</div>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact" class="active">Contact</a>
+      <a href="/login">Login or Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    <form id="supportForm" onsubmit="sendSupport(event)">
+      <input type="text"name="name" placeholder="Your Name" required>
+      <input type="email"name="email" placeholder="Your Email" required>
+      <input type="text"name="subject" placeholder="Subject" required>
+      <textarea rows="6" name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="info">
+      <p>Email: support@furni.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 123 Furniture St, Design City, World</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Furni. All rights reserved.
+  </footer>
+
+  <script>
+  function sendSupport(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('supportForm');
+    const formData = new FormData(form);
+
+    const supportData = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+      date: new Date().toLocaleString()
+    };
+
+    fetch('/support', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(supportData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message);
+      form.reset();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Xabar yuborishda xatolik yuz berdi");
+    });
+  }
+</script>
+
+</body>
+
+</html>
