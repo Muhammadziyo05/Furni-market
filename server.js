@@ -81,6 +81,7 @@ app.post('/add-to-cart', async (req, res) => {
   } catch (err) {
     console.error("Saqlashda xatolik:", err);
     res.status(500).json({ message: "Faylga yozishda xatolik yuz berdi." });
+
   }
 });
 

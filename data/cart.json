@@ -7,15 +7,9 @@
       "quantity": 1
     },
     {
-      "name": "O'yinchoqlar javoni",
-      "price": 420000,
-      "image": "/image/toyShelf.jpg",
-      "quantity": 1
-    },
-    {
-      "name": "Devor soati",
-      "price": 95000,
-      "image": "/image/clock.jpg",
+      "name": "Stol chirog'i",
+      "price": 150000,
+      "image": "/image/lamp.jpg",
       "quantity": 1
     }
   ],
