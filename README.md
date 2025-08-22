@@ -1,0 +1,26 @@
+Admin login paroli
+{
+  "admin": {
+    "username": "admin",
+    "email": "ajdsjk@gmail.com",
+    "password": "23"
+  }
+}
+
+Barcha foydalanuvchilar ro'yxati
+{
+  "user": {
+    "username": "user",
+    "email": "user@example.com",
+    "password": "123",
+    "phone": "+998 90 123 45 67",
+    "address": "Toshkent shahri, Yakkasaroy tumani"
+  },
+  "lenabydyve": {
+    "username": "lenabydyve",
+    "email": "pilovon@mailinator.com",
+    "password": "salom",
+    "phone": "+1 (714) 195-4928",
+    "address": "Dolores nostrum do n"
+  }
+}
