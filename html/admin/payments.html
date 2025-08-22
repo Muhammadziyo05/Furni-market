@@ -121,7 +121,7 @@
         const tbody = document.getElementById('paymentTableBody');
         let index = 1;
 
-        data.forEach(entry => {
+        data.reverse().forEach(entry => {
           const row = `
           <tr style="border-bottom: 1px solid #ddd;">
             <td>${index++}</td>

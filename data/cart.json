@@ -1,5 +1,24 @@
 {
-  "user": [],
+  "user": [
+    {
+      "name": "Bolalar karavoti",
+      "price": 950000,
+      "image": "/image/kidsBed.jpg",
+      "quantity": 1
+    },
+    {
+      "name": "O'yinchoqlar javoni",
+      "price": 420000,
+      "image": "/image/toyShelf.jpg",
+      "quantity": 1
+    },
+    {
+      "name": "Devor soati",
+      "price": 95000,
+      "image": "/image/clock.jpg",
+      "quantity": 1
+    }
+  ],
   "bek": [
     {
       "name": "Bolalar karavoti",

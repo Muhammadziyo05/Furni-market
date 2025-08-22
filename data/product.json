@@ -12,5 +12,12 @@
     "description": "Bolalar uchun yaxshi",
     "quantity": 1,
     "image": "/image/1750668229253-kidsBed.jpg"
+  },
+  {
+    "name": "Sylvester Baldwin",
+    "price": 259,
+    "description": "Quis provident libe",
+    "quantity": 363,
+    "image": "/image/1755188300925-00049.jpg"
   }
 ]
