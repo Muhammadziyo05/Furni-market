@@ -1,24 +1,10 @@
 {
-  "bek": [
-    {
-      "name": "Muhammadziyo Mashrabboyev",
-      "amount": 950000,
-      "paymentType": "Naqd",
-      "date": "6/21/2025, 9:29:41 PM"
-    }
-  ],
   "user": [
     {
       "name": "user",
       "amount": 1465000,
       "paymentType": "Naqd",
       "date": "6/21/2025, 9:30:20 PM"
-    },
-    {
-      "name": "Mashrabboyev",
-      "amount": 1465000,
-      "paymentType": "Naqd",
-      "date": "6/21/2025, 9:54:29 PM"
     },
     {
       "name": "asda",
@@ -33,16 +19,24 @@
       "date": "6/21/2025, 9:59:51 PM"
     },
     {
-      "name": "Muhammadziyo Mashrabboyev",
-      "amount": 950000,
-      "paymentType": "Payme",
-      "date": "6/22/2025, 11:15:06 AM"
-    },
-    {
       "name": "user",
       "amount": 2050000,
       "paymentType": "Click",
       "date": "6/23/2025, 1:47:54 PM"
+    },
+    {
+      "name": "efrfefeferf",
+      "amount": 1370000,
+      "paymentType": "Click",
+      "date": "8/13/2025, 3:28:16 PM"
+    }
+  ],
+  "seraf": [
+    {
+      "name": "seraf",
+      "amount": 1615000,
+      "paymentType": "Click",
+      "date": "8/23/2025, 5:37:48 PM"
     }
   ]
 }

@@ -1,11 +1,25 @@
 {
-  "user": [],
-  "bek": [
+  "user": [
     {
       "name": "Bolalar karavoti",
       "price": 950000,
       "image": "/image/kidsBed.jpg",
       "quantity": 1
+    },
+    {
+      "name": "Stol chirog'i",
+      "price": 150000,
+      "image": "/image/lamp.jpg",
+      "quantity": 1
     }
-  ]
+  ],
+  "admin": [
+    {
+      "name": "O'yinchoqlar javoni",
+      "price": 420000,
+      "image": "/image/toyShelf.jpg",
+      "quantity": 1
+    }
+  ],
+  "seraf": []
 }

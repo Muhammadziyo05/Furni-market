@@ -47,7 +47,7 @@ router.post('/signup', (req, res) => {
       res.send(`
         <script>
           alert('Foydalanuvchi muvaffaqiyatli saqlandi!');
-          window.location.href = '/signup';
+          window.location.href = '/user/profile';
         </script>
       `);
     });
