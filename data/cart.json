@@ -13,12 +13,13 @@
       "quantity": 1
     }
   ],
-  "bek": [
+  "admin": [
     {
-      "name": "Bolalar karavoti",
-      "price": 950000,
-      "image": "/image/kidsBed.jpg",
+      "name": "O'yinchoqlar javoni",
+      "price": 420000,
+      "image": "/image/toyShelf.jpg",
       "quantity": 1
     }
-  ]
+  ],
+  "seraf": []
 }
